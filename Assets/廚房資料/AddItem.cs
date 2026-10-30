@@ -1,5 +1,6 @@
 using UnityEngine;
-    public class BentoPlate
+using UnityEngine.UI;
+public class BentoPlate
     {
         public int currentRice;
         public int currentEgg;
@@ -7,7 +8,6 @@ using UnityEngine;
     }
 public class AddItem : MonoBehaviour
 {
-   
     
         public BentoPlate playerPlate = new BentoPlate();
         public void AddMeat()
@@ -35,8 +35,15 @@ public class AddItem : MonoBehaviour
             if (playerPlate.currentEgg > 1)
             {
             playerPlate.currentEgg = 1;
-
             }
+
+            Button eggBtn = potitem.potEgg.newEgg.GetComponent<Button>();
+            if (eggBtn != null)
+            {
+                eggBtn.onClick.RemoveAllListeners();
+            }
+                Destroy(potitem.potEgg.newEgg);
+            
                 Debug.Log($"目前蛋數量{playerPlate.currentEgg}");
         }
     // Start is called once before the first execution of Update after the MonoBehaviour is created

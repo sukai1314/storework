@@ -946,7 +946,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::potitem
   Egg: {fileID: 0}
-  canvasTrans: {fileID: 0}
+  newEgg: {fileID: 0}
+  canvasTrans: {fileID: 1165306663}
 --- !u!1 &818404355
 GameObject:
   m_ObjectHideFlags: 0
