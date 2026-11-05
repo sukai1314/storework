@@ -881,6 +881,7 @@ GameObject:
   - component: {fileID: 746602383}
   - component: {fileID: 746602384}
   - component: {fileID: 746602385}
+  - component: {fileID: 746602386}
   m_Layer: 0
   m_Name: gamemanager
   m_TagString: Untagged
@@ -940,7 +941,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 746602380}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c37a27a64143424fa33b942e63cd7cf, type: 3}
   m_Name: 
@@ -948,6 +949,22 @@ MonoBehaviour:
   Egg: {fileID: 0}
   newEgg: {fileID: 0}
   canvasTrans: {fileID: 1165306663}
+--- !u!114 &746602386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746602380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84b80eba0c32bf94ea09ef4c07545e52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::newpotitem
+  rec: {fileID: 1165306663}
+  button:
+  - {fileID: 1400212236}
+  - {fileID: 1557824402}
 --- !u!1 &818404355
 GameObject:
   m_ObjectHideFlags: 0
@@ -2090,7 +2107,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 0
 --- !u!114 &1400212237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2302,7 +2319,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 0
 --- !u!114 &1557824403
 MonoBehaviour:
   m_ObjectHideFlags: 0

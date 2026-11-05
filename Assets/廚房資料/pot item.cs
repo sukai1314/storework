@@ -41,23 +41,23 @@ public class potitem : AddItem
             RectTransform rectTransform = newEgg.GetComponent<RectTransform>();
             if (rectTransform != null)
             {
-                CreatBotton();
+                //CreatBotton();
                 rectTransform.anchoredPosition = new Vector2(590f, -38f);
             }
 
         }
     }
-    public void CreatBotton()
-    {
-        if (newEgg != null)
-        {
-            Button btn=newEgg.GetComponent<Button>();
-            if (btn != null)
-            {
-                btn.onClick.AddListener(() => { 
-                    AddEgg(); 
-                });
-            }
-        }
-    }
+    //public void CreatBotton()
+    //{
+    //    if (newEgg != null)
+    //    {
+    //        Button btn=newEgg.GetComponent<Button>();
+    //        if (btn != null)
+    //        {
+    //            btn.onClick.AddListener(() => { 
+    //                AddEgg(); 
+    //            });
+    //        }
+    //    }
+    //}
 }

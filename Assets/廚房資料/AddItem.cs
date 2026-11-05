@@ -10,11 +10,12 @@ public class AddItem : MonoBehaviour
 {
     
         public BentoPlate playerPlate = new BentoPlate();
-        public void AddMeat()
+        public void AddMeat(string btnName)
         {
             playerPlate.currentMeat++;
             if (playerPlate.currentMeat > 1) { playerPlate.currentMeat = 1; }
-            Debug.Log($"ヘ玡ψ计秖{playerPlate.currentMeat}");
+        newpotitem.potItem.RemoveBtnClick(btnName);
+        Debug.Log($"ヘ玡ψ计秖{playerPlate.currentMeat}");
         }
 
         public void AddRice()
@@ -28,7 +29,7 @@ public class AddItem : MonoBehaviour
             }
                 Debug.Log($"ヘ玡フ逗计秖{playerPlate.currentRice}");
         }
-        public void AddEgg()
+        public void AddEgg(string btnName)
         {
         playerPlate.currentEgg++;
 
@@ -36,13 +37,7 @@ public class AddItem : MonoBehaviour
             {
             playerPlate.currentEgg = 1;
             }
-
-            Button eggBtn = potitem.potEgg.newEgg.GetComponent<Button>();
-            if (eggBtn != null)
-            {
-                eggBtn.onClick.RemoveAllListeners();
-            }
-                Destroy(potitem.potEgg.newEgg);
+            newpotitem.potItem.RemoveBtnClick(btnName);
             
                 Debug.Log($"ヘ玡矹计秖{playerPlate.currentEgg}");
         }
