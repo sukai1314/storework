@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Collections;
+using TMPro;
+using System.ComponentModel;
 public class newpotitem : AddItem
 {
     public static newpotitem potItem { get; private set; }
@@ -46,38 +48,46 @@ public class newpotitem : AddItem
             }
         }
     }
-
+    public bool itemType = true;
     //用名稱製作字典
     public void MakeDic(string btnName)
     {
-        foreach(var key in new List<string>(potItemData.Keys))
+        if (itemType)
         {
-            if(potItemData[key].newpotItem != null)
+            foreach (var key in new List<string>(potItemData.Keys))
             {
-                RemoveBtnClick(key);
+                if (potItemData[key].newpotItem != null)
+                {
+                    RemoveBtnClick(key);
+                }
             }
-        }
-        potItemInfo info = new potItemInfo();
-        info.potItem =Resources.Load<GameObject>(btnName);
-        info.newpotItem = Instantiate(info.potItem,rec);
-        info.rectTransform = info.newpotItem.GetComponent<RectTransform>();
-        if(info.rectTransform != null)
-        {
-            CreatBtn(info.newpotItem);
-            switch(btnName)
+            potItemInfo info = new potItemInfo();
+            info.potItem = Resources.Load<GameObject>(btnName);
+            info.newpotItem = Instantiate(info.potItem, rec);
+            info.rectTransform = info.newpotItem.GetComponent<RectTransform>();
+
+            if (info.rectTransform != null)
             {
-                case "add egg(Clone)":
-                    info.rectTransform.anchoredPosition= new Vector2(590f, -38f);
-                    break;
-                case "add meat(Clone)":
-                    info.rectTransform.anchoredPosition= new Vector2(693f, -614f);
-                    break;
-                default:
-                    Debug.Log($"沒有對應的按鈕名稱:{btnName}");
-                    break;
+
+                switch (btnName)
+                {
+                    case "add egg(Clone)":
+                        info.rectTransform.anchoredPosition = new Vector2(590f, -38f);
+                        break;
+                    case "add meat(Clone)":
+                        info.rectTransform.anchoredPosition = new Vector2(693f, -614f);
+                        break;
+                    default:
+                        Debug.Log($"沒有對應的按鈕名稱:{btnName}");
+                        break;
+                }
+                StartCoroutine(CookTime(info.newpotItem, btnName));
             }
+            potItemData[btnName] = info;
+            //鎖定物件
+            itemType = false;
         }
-        potItemData[btnName]= info;
+        else { Debug.Log("有其他物件"); }
     }
 
     struct potItemInfo
@@ -104,12 +114,15 @@ public class newpotitem : AddItem
     {
         if (newpotItem != null)
         {
-            Button btn = newpotItem.GetComponent<Button>();
-            if (btn != null)
-            {
-                Debug.Log($"按鈕名稱:{btn.name}");
-                btn.onClick.AddListener(() => { EventDic(btn.name); });
-            }
+
+                Button btn = newpotItem.GetComponent<Button>();
+                if (btn != null)
+                {
+                    Debug.Log($"按鈕名稱:{btn.name}");
+                    btn.onClick.AddListener(() => { EventDic(btn.name); });
+                }
+           
+            
         }
     }
     //移除事件及摧毀物件
@@ -121,6 +134,7 @@ public class newpotitem : AddItem
             if(potItemData[cleanName].newpotItem != null)
             {
             Debug.Log($"移除按鈕事件:{cleanName}");
+                itemType = true;
             potItemData[cleanName].newpotItem.GetComponent<Button>().onClick.RemoveAllListeners();
             Destroy(potItemData[cleanName].newpotItem);
             }
@@ -129,6 +143,35 @@ public class newpotitem : AddItem
         else
         {
             Debug.Log($"字典中沒有{cleanName}");
+        }
+    }
+    public TextMeshProUGUI cookTime;
+     IEnumerator CookTime(GameObject newPotItem, string btnName)
+    {
+        float targetTime = 0f;
+        switch (btnName.Replace("(Clone)", ""))
+        {
+            case "add egg":
+                targetTime = 2f;
+                break;
+            case "add meat":
+                targetTime = 5f;
+                break;
+            default:
+                Debug.Log($"沒有對應的按鈕名稱:{btnName}");
+                break;
+        }
+
+        while (0f < targetTime)
+        {
+            cookTime.text = targetTime.ToString("F0");
+            targetTime -= Time.deltaTime;
+            yield return null;
+        }
+        cookTime.text = "";
+        if (newPotItem != null)
+        {
+            CreatBtn(newPotItem);
         }
     }
 }
