@@ -1,0 +1,12 @@
+Font:   Style: 
+Point Size: 0   Padding: 0   SP/PD Ratio: 非數值
+
+Characters included: 16488/20912
+Missing characters: 0
+Excluded characters: 0
+
+Characters missing from font file:
+----------------------------------------
+
+Characters excluded from packing:
+----------------------------------------
