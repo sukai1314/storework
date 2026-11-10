@@ -2,9 +2,9 @@ using UnityEngine;
 using UnityEngine.UI;
 public class BentoPlate
     {
-        public int currentRice;
-        public int currentEgg;
-        public int currentMeat;
+        public int currentRice=0;
+        public int currentEgg=0;
+        public int currentMeat=0;
     }
 public class AddItem : MonoBehaviour
 {

@@ -17,14 +17,15 @@ public class customer : MonoBehaviour
             Debug.Log("已有客人");
         }
         custo=this;
-    }
-    void Start()
-    {
         //boy
         CreatCustomer(1, "boy", new Vector2(57, 300));
         CreatCustomer(2, "man", new Vector2(80, 268));
         CreatCustomer(3, "woman", new Vector2(77, 280));
-        showCus(1);
+    }
+    void Start()
+    {
+
+        
     }
 
     // Update is called once per frame
@@ -61,12 +62,12 @@ public class customer : MonoBehaviour
         customerInfo[id].image.color = newColor;
     }
     //建立客戶
-    struct customerList
+    public struct customerList
     {
         public GameObject customerPreb;
         public GameObject customerImage;
         public RectTransform rectTransform;
         public UnityEngine.UI.Image image;
     }
-    Dictionary<int,customerList> customerInfo=new Dictionary<int,customerList>();
+    public Dictionary<int,customerList> customerInfo=new Dictionary<int,customerList>();
 }
