@@ -69,18 +69,18 @@ public class newpotitem : AddItem
             if (info.rectTransform != null)
             {
 
-                switch (btnName)
-                {
-                    case "add egg(Clone)":
-                        info.rectTransform.anchoredPosition = new Vector2(590f, -38f);
-                        break;
-                    case "add meat(Clone)":
-                        info.rectTransform.anchoredPosition = new Vector2(693f, -614f);
-                        break;
-                    default:
-                        Debug.Log($"沒有對應的按鈕名稱:{btnName}");
-                        break;
-                }
+                //switch (btnName)
+                //{
+                //    case "add egg(Clone)":
+                //        info.rectTransform.anchoredPosition = new Vector2(590f, -38f);
+                //        break;
+                //    case "add meat(Clone)":
+                //        info.rectTransform.anchoredPosition = new Vector2(693f, -613f);
+                //        break;
+                //    default:
+                      Debug.Log($"沒有對應的按鈕名稱:{btnName}");
+                //        break;
+                //}
                 StartCoroutine(CookTime(info.newpotItem, btnName));
             }
             potItemData[btnName] = info;
@@ -106,6 +106,7 @@ public class newpotitem : AddItem
     {
         if (eventDic.ContainsKey(btn))
         {
+            Debug.Log($"觸發事件:{btn}");
             eventDic[btn].Invoke(btn);
         }
     }
@@ -168,6 +169,7 @@ public class newpotitem : AddItem
             targetTime -= Time.deltaTime;
             yield return null;
         }
+        Debug.Log($"烹煮完成:{btnName}");
         cookTime.text = "";
         if (newPotItem != null)
         {

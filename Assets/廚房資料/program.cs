@@ -28,13 +28,18 @@ public class program : MonoBehaviour
     public int scare=0;
     public TextMeshProUGUI scareText;
 
+    public TextMeshProUGUI playerplateText;
+    private int riceCount;
+    private int eggCount;
+    private int meatCount;
+
     private Coroutine custCoroutine;
     [Header("所有便當配方")]
     public List<BentoRecip> allrecipes;
 
     //新增菜點
-    [Header("取得AddItem")]
-    public AddItem addItemComponent;
+    //[Header("取得AddItem")]
+    //public AddItem addItemComponent;
 
     //客戶訂單
     string orderName;
@@ -70,11 +75,10 @@ public class program : MonoBehaviour
     void Update()
     {
         
-        if(addItemComponent!=null) {
-            int riceCount=addItemComponent.playerPlate.currentRice;
-            int eggCount = addItemComponent.playerPlate.currentEgg;
-            int meatCount = addItemComponent.playerPlate.currentMeat;
-
+        if(AddItem.Instance!=null) {
+            riceCount= AddItem.Instance.playerPlate.currentRice;
+            eggCount = AddItem.Instance.playerPlate.currentEgg;
+            meatCount = AddItem.Instance.playerPlate.currentMeat;
             //建立字典
             Dictionary<string, int> plateDic = new Dictionary<string, int>()
             {
@@ -121,10 +125,11 @@ public class program : MonoBehaviour
     public void CheckOrder()
     {
         Debug.Log("開始比對");
-        int riceCount = addItemComponent.playerPlate.currentRice;
-        int eggCount = addItemComponent.playerPlate.currentEgg;
-        int meatCount = addItemComponent.playerPlate.currentMeat;
+        riceCount = AddItem.Instance.playerPlate.currentRice;
+        eggCount = AddItem.Instance.playerPlate.currentEgg;
+        meatCount = AddItem.Instance.playerPlate.currentMeat;
         Debug.Log($"{riceNeeded}{eggNeeded}{meatNeeded}");
+        Debug.Log($"[比對時讀取的物件] {AddItem.Instance.gameObject.name} -> 飯{riceCount}蛋{eggCount}肉{meatCount}");
         Debug.Log($"飯{riceCount}蛋{eggCount}肉{meatCount}");
             //Debug.Log($"{checkOrder.bentoName}{checkOrder.riceNeeded}{checkOrder.meatNeeded}{checkOrder.eggNeeded}");
             //Debug.Log($"{ riceCount}{meatCount}{eggCount}");
@@ -139,6 +144,13 @@ public class program : MonoBehaviour
         }
             Debug.Log("失敗");
 
+    }
+    public void CleanDish()
+    {
+        AddItem.Instance.playerPlate.currentRice = 0;
+        AddItem.Instance.playerPlate.currentEgg = 0;
+        AddItem.Instance.playerPlate.currentMeat = 0;
+        Debug.Log("清空餐點");
     }
 
     public void CustomerOrder()
@@ -161,11 +173,22 @@ public class program : MonoBehaviour
             {
                 targetText.text = timer.ToString("F0");
             }
+            if(playerplateText!=null)
+            {
+                riceCount = AddItem.Instance.playerPlate.currentRice;
+                eggCount = AddItem.Instance.playerPlate.currentEgg;
+                meatCount = AddItem.Instance.playerPlate.currentMeat;
+                playerplateText.text = $"rice:{riceCount} egg:{eggCount} meat:{meatCount}";
+            }
             yield return null;
         }
         action?.Invoke();
     }
 
+    public void StartGame()
+    {
+        SceneManager.LoadScene("SampleScene");
+    }
 }
 
 

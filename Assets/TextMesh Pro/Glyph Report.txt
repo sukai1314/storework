@@ -1,12 +1,22 @@
 Font:   Style: 
 Point Size: 0   Padding: 0   SP/PD Ratio: 非數值
 
-Characters included: 16488/20912
-Missing characters: 0
+Characters included: 4567/20912
+Missing characters: 10
 Excluded characters: 0
 
 Characters missing from font file:
 ----------------------------------------
+ID: 40870	Hex: 9FA6	Char [龦]
+ID: 40871	Hex: 9FA7	Char [龧]
+ID: 40872	Hex: 9FA8	Char [龨]
+ID: 40873	Hex: 9FA9	Char [龩]
+ID: 40874	Hex: 9FAA	Char [龪]
+ID: 40875	Hex: 9FAB	Char [龫]
+ID: 40876	Hex: 9FAC	Char [龬]
+ID: 40877	Hex: 9FAD	Char [龭]
+ID: 40878	Hex: 9FAE	Char [龮]
+ID: 40879	Hex: 9FAF	Char [龯]
 
 Characters excluded from packing:
 ----------------------------------------

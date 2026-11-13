@@ -3,17 +3,23 @@ using UnityEngine.UI;
 public class BentoPlate
     {
         public int currentRice=0;
-        public int currentEgg=0;
+    private int egg;
+    public int currentEgg;
+    
         public int currentMeat=0;
     }
 public class AddItem : MonoBehaviour
 {
-    
+        public static AddItem Instance { get; private set; }
         public BentoPlate playerPlate = new BentoPlate();
-        public void AddMeat(string btnName)
+        private void Awake()
+        {
+            Instance= this;
+    }
+    public void AddMeat(string btnName)
         {
             playerPlate.currentMeat++;
-            if (playerPlate.currentMeat > 1) { playerPlate.currentMeat = 1; }
+        if (playerPlate.currentMeat > 1) { playerPlate.currentMeat = 1; }
         newpotitem.potItem.RemoveBtnClick(btnName);
         Debug.Log($"ヘ玡ψ计秖{playerPlate.currentMeat}");
         }
@@ -21,8 +27,7 @@ public class AddItem : MonoBehaviour
         public void AddRice()
         {
             playerPlate.currentRice++;
-
-            if (playerPlate.currentRice > 1)
+        if (playerPlate.currentRice > 1)
             {
                 playerPlate.currentRice = 1;
 
@@ -32,6 +37,7 @@ public class AddItem : MonoBehaviour
         public void AddEgg(string btnName)
         {
         playerPlate.currentEgg++;
+        Debug.Log($"[砆эン] {gameObject.name} -> ヘ玡矹计秖{playerPlate.currentEgg}");
 
             if (playerPlate.currentEgg > 1)
             {
@@ -39,7 +45,7 @@ public class AddItem : MonoBehaviour
             }
             newpotitem.potItem.RemoveBtnClick(btnName);
             
-                Debug.Log($"ヘ玡矹计秖{playerPlate.currentEgg}");
+                Debug.Log($"ヘ玡矹计秖{playerPlate.currentEgg}{btnName}");
         }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -52,4 +58,5 @@ public class AddItem : MonoBehaviour
     {
         
     }
+
 }
