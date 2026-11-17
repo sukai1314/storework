@@ -29,10 +29,16 @@ public class program : MonoBehaviour
     public TextMeshProUGUI scareText;
 
     public TextMeshProUGUI playerplateText;
-    private int riceCount;
-    private int eggCount;
-    private int meatCount;
-
+    private int riceCount=0;
+    private int eggCount=0;
+    private int meatCount=0;
+    public void PlateFood(int ricecount,int eggcount,int meatcount)
+    {
+        this.riceCount=ricecount;
+        this.eggCount =eggcount;
+        this.meatCount =meatcount;
+        Debug.Log($"收到{ricecount} 轉成{riceCount}");
+    }
     private Coroutine custCoroutine;
     [Header("所有便當配方")]
     public List<BentoRecip> allrecipes;
@@ -76,9 +82,7 @@ public class program : MonoBehaviour
     {
         
         if(AddItem.Instance!=null) {
-            riceCount= AddItem.Instance.playerPlate.currentRice;
-            eggCount = AddItem.Instance.playerPlate.currentEgg;
-            meatCount = AddItem.Instance.playerPlate.currentMeat;
+
             //建立字典
             Dictionary<string, int> plateDic = new Dictionary<string, int>()
             {
@@ -125,9 +129,7 @@ public class program : MonoBehaviour
     public void CheckOrder()
     {
         Debug.Log("開始比對");
-        riceCount = AddItem.Instance.playerPlate.currentRice;
-        eggCount = AddItem.Instance.playerPlate.currentEgg;
-        meatCount = AddItem.Instance.playerPlate.currentMeat;
+
         Debug.Log($"{riceNeeded}{eggNeeded}{meatNeeded}");
         Debug.Log($"[比對時讀取的物件] {AddItem.Instance.gameObject.name} -> 飯{riceCount}蛋{eggCount}肉{meatCount}");
         Debug.Log($"飯{riceCount}蛋{eggCount}肉{meatCount}");
@@ -141,6 +143,7 @@ public class program : MonoBehaviour
             scare++;
             StopCoroutine(custCoroutine);
             custCoroutine=null;
+            ShowOrder();
         }
             Debug.Log("失敗");
 
@@ -175,9 +178,7 @@ public class program : MonoBehaviour
             }
             if(playerplateText!=null)
             {
-                riceCount = AddItem.Instance.playerPlate.currentRice;
-                eggCount = AddItem.Instance.playerPlate.currentEgg;
-                meatCount = AddItem.Instance.playerPlate.currentMeat;
+
                 playerplateText.text = $"rice:{riceCount} egg:{eggCount} meat:{meatCount}";
             }
             yield return null;

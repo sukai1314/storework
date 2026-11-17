@@ -1344,6 +1344,10 @@ MonoBehaviour:
     riceNeeded: 1
     eggNeeded: 0
     meatNeeded: 1
+  - bentoName: 0
+    riceNeeded: 0
+    eggNeeded: 0
+    meatNeeded: 0
 --- !u!114 &746602384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1356,6 +1360,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0b892f26c6d9ea4d84120188c2b4202, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  myprogram: {fileID: 0}
 --- !u!114 &746602385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1368,6 +1373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c37a27a64143424fa33b942e63cd7cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::potitem
+  myprogram: {fileID: 0}
   Egg: {fileID: 0}
   newEgg: {fileID: 0}
   canvasTrans: {fileID: 1165306663}
@@ -1383,6 +1389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84b80eba0c32bf94ea09ef4c07545e52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::newpotitem
+  myprogram: {fileID: 0}
   rec: {fileID: 1165306663}
   button:
   - {fileID: 1400212236}
@@ -4166,9 +4173,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
+  m_Maskable: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
